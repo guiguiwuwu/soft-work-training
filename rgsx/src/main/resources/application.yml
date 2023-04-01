@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://frp-can.top:58866/mysql
+    password: root
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
