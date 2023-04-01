@@ -16,7 +16,8 @@
 			let that = this;
 			this.manager = uni.getRecorderManager();
 			this.manager.onStop(function(result){
-				this.imageURL = "/static/bg.JPG";
+				console.log("录音结束")
+				that.imageURL = "/static/bg.JPG";
 				let filePath = result.tempFilePath
 				const option = {
 				        url: 'http://192.168.43.36:8080/login',
@@ -50,7 +51,7 @@
 			clickDown(){
 				this.imageURL = "/static/bg.gif";
 				this.manager.start({
-					duration:3000,
+					duration:3500,
 					sampleRate:16000,
 					numberOfChannels:1,
 					encodeBitRate:24000,
@@ -59,7 +60,9 @@
 			},
 			//提起
 			clickUp(){
+				console.log("提起")
 				this.imageURL = "/static/bg.JPG";
+				this.manager.pause();
 				this.manager.stop();
 			}
 		}
