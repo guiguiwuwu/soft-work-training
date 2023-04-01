@@ -10,15 +10,15 @@ public class ResultVo {
     private String code;//代码
     private Object data;//数据
 
-    public ResultVo success(String msg,Object data){
+    public static ResultVo success(String msg,Object data){
         return new ResultVo(msg,"0",data);
     }
 
-    public ResultVo fail(Exception e){
+    public static ResultVo fail(Exception e){
         return new ResultVo(e.getMessage(),"1",null);
     }
 
-    public ResultVo fail(String msg , String code){
+    public static ResultVo fail(String msg , String code){
         return new ResultVo(msg,code,null);
     }
 

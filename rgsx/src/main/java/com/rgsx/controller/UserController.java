@@ -1,20 +1,27 @@
 package com.rgsx.controller;
 
-import com.rgsx.utils.HttpSendFile;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.rgsx.UserService.UserService;
+import com.rgsx.utils.FileUtil;
+import com.rgsx.vo.ResultVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 
 @RestController
 @ResponseBody
 public class UserController {
-    @GetMapping("/test")
-    public String test() throws UnsupportedEncodingException {
-        File file = new File("D\\1.wav");
-        HttpSendFile.call_sendFile(file,"","");
-        return "测试成功";
+    @Autowired
+    UserService userService;
+
+    @PostMapping("/login")
+    public ResultVo login(@RequestParam(value = "file") MultipartFile multipartFile){
+        File file = FileUtil.MultipartFileToFile(multipartFile);
+        return userService.login(file);
+
     }
 }

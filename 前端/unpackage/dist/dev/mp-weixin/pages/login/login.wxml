@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['touchstart',[['clickDown',['$event']]]],['touchend',[['clickUp',['$event']]]]]}}" class="page data-v-b237504c" bindtouchstart="__e" bindtouchend="__e"><image class="img data-v-b237504c" src="{{imageURL}}"></image></view>
